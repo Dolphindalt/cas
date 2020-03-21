@@ -1,4 +1,4 @@
-module github.com/Dolphindalt/cas
+module gopkg.in/Dolphindalt/cas.v4
 
 go 1.13
 
