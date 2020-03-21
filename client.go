@@ -131,14 +131,16 @@ func (c *Client) LoginUrlForRequest(r *http.Request) (string, error) {
 		return "", err
 	}
 
-	service, err := requestURL(r)
-	if err != nil {
-		return "", err
-	}
+	if c.sendService {
+		service, err := requestURL(r)
+		if err != nil {
+			return "", err
+		}
 
-	q := u.Query()
-	q.Add("service", sanitisedURLString(service))
-	u.RawQuery = q.Encode()
+		q := u.Query()
+		q.Add("service", sanitisedURLString(service))
+		u.RawQuery = q.Encode()
+	}
 
 	return u.String(), nil
 }
